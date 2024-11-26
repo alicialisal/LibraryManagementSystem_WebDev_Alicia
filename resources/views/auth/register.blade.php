@@ -45,8 +45,6 @@
                 {{-- <option value="student">Student</option> --}}
                 <option value="librarian">Librarian</option>
                 <option value="admin">Admin</option>
-                <option value="student">Student</option>
-                <option value="lecturer">Lecturer</option>
             </select>
         </div>
 

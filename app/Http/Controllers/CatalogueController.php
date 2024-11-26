@@ -2,17 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Book;
 use App\Models\Books;
 use App\Models\Newspaper;
 use App\Models\Cd;
 use App\Models\Journal;
 use App\Models\FinalYearProject;
-use App\Models\BorrowedItem;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
 use App\Models\CollectionUpdateRequest;
-use Illuminate\Support\Facades\Auth;
-use Carbon\Carbon;
 
 class CatalogueController extends Controller
 {
@@ -151,5 +149,6 @@ class CatalogueController extends Controller
     // Redirect the user with a success message
     return redirect()->route('catalogues.index')->with('success', 'Catalogue update request submitted. Awaiting admin approval.');
     }
+
 }
 
