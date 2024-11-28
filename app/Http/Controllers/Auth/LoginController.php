@@ -63,8 +63,10 @@ class LoginController extends Controller
                 return redirect()->route('admin.dashboard');
             }else if ($user->role == 'librarian') {
                 return redirect()->route('librarian.dashboard');
-            }else{
-                return redirect()->route('home');
+            }else if ($user->role == 'student') {
+                return redirect()->route('student.dashboard');
+            } else {
+                return redirect()->route('lecturer.dashboard');
             }
         }else{
             return redirect()->route('login')

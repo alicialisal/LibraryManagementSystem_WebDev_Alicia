@@ -52,8 +52,10 @@ class RegisteredUserController extends Controller
             return redirect()->route('admin.dashboard');
         } elseif ($user->role == 'librarian') {
             return redirect()->route('librarian.dashboard');
-        } else {
+        } elseif ($user->role == 'student') {
             return redirect()->route('student.dashboard'); // Assuming there's a student dashboard
+        } else {
+            return redirect()->route('lecturer.dashboard'); // Assuming there's a student dashboard
         }
     }
 

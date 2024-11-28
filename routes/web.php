@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LibrarianController;
+use App\Http\Controllers\BorrowedItemController;
 use App\Http\Controllers\CatalogueController;
 use App\Http\Controllers\CollectionUpdateRequestController;
 use Illuminate\Support\Facades\Auth;
@@ -20,9 +21,19 @@ Auth::routes();
 All Normal Users Routes List
 --------------------------------------------
 --------------------------------------------*/
-Route::middleware(['auth', 'user-access:user'])->group(function () {
+Route::middleware(['auth', 'user-access:student'])->group(function () {
   
-    Route::get('/home', [HomeController::class, 'index'])->name('home');
+    Route::get('/student/home', [HomeController::class, 'index'])->name('student.dashboard');
+    Route::get('/student/home/borrow/{id}/{category}', [BorrowedItemController::class, 'borrow'])->name('borrowedItems.borrow.s');
+    Route::get('/student/home/history', [BorrowedItemController::class, 'history'])->name('borrowed.history.s');
+
+});
+
+Route::middleware(['auth', 'user-access:lecturer'])->group(function () {
+  
+    Route::get('/lecturer/home', [HomeController::class, 'index'])->name('lecturer.dashboard');
+    Route::get('/lecturer/home/borrow/{id}/{category}', [BorrowedItemController::class, 'borrow'])->name('borrowedItems.borrow.l');
+    Route::get('/lecturer/home/history', [BorrowedItemController::class, 'history'])->name('borrowed.history.l');
 });
   
 /*------------------------------------------

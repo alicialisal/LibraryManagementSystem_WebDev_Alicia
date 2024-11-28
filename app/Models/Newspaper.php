@@ -28,4 +28,10 @@ class Newspaper extends Model
 
     public $timestamps = false;
     public $updated_at = false;
+
+    public function borrowedItems()
+{
+    return $this->morphMany(BorrowedItem::class, 'borrowable');
+}
+
 }
